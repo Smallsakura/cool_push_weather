@@ -18,11 +18,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - name: 初始化Python
+      - name: 初始化Python环境
         uses: actions/setup-python@master
         with:
           python-version: 3.7
-      - name: 签到
+      - name: 安装依赖并替换环境变量
         run: |
           pip install -r requirements.txt
 
