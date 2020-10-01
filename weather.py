@@ -1,6 +1,6 @@
 import requests
 import os
-spkeys = os.getenv['SPKEY'].split('#')
+spkeys = os.getenv['SPKEY']
 
 print("秘钥", spkeys)
 
