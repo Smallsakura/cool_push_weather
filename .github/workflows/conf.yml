@@ -1,5 +1,4 @@
 name: 酷Q天气推送
-
 on:
   push:
     branches: [master]
@@ -23,44 +22,36 @@ jobs:
         with:
           python-version: 3.7
       - name: 安装依赖并替换环境变量
-      env:
-            SPKEY: ${{ secrets.SPKEY }}
-        run: 
+        env:
+          SPKEY: ${{ secrets.SPKEY }}
+        run:
           pip install -r requirements.txt
           python3 weather.py
           # run: python autoclick.py
           # user='${{ secrets.USER }}'
           # pwd='${{ secrets.PWD }}'
           # spkey='${{ secrets.SPKEY }}'
-
           # user_list=()
           # pwd_list=()
-
           # IFS="#"
-
           # for u in ${user[*]}
           # do
           # user_list[${#user_list[*]}]=${u}
           # done
-
           # for p in ${pwd[*]}
           # do
           # pwd_list[${#pwd_list[*]}]=${p}
           # done
-
           # user_num=${#user_list[*]}
           # pwd_num=${#pwd_list[*]}
-
           # if [ $user_num != $pwd_num ];then
           # echo "账号和密码个数不对应"
           # exit 1
           # else
           # echo "共有 $user_num 个账号，即将开始签到"
           # fi
-
           # for ((i=0;i<$user_num;i++))
           # do
-          
           # python3 weather.py <<EOF
           # ${user_list[$i]}
           # ${pwd_list[$i]}
