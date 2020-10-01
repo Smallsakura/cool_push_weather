@@ -2,11 +2,9 @@ import requests
 import os
 spkeys = os.environ['SPKEY'].split('#')
 
-print("秘钥", spkeys)
+# print("秘钥", spkeys)
 
 # 采集网易云的接口
-
-
 def get_163_info():
     headers = {
         "authority": "api.uomg.com",
