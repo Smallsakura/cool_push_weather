@@ -24,7 +24,7 @@ jobs:
       - name: 安装依赖并替换环境变量
         env:
           SPKEY: ${{ secrets.SPKEY }}
-        run:
+        run: |
           pip install -r requirements.txt
           python3 weather.py
           # run: python autoclick.py
