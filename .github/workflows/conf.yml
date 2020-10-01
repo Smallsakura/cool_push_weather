@@ -29,7 +29,6 @@ jobs:
           pip install -r requirements.txt
           python3 weather.py
           # run: python autoclick.py
-
           # user='${{ secrets.USER }}'
           # pwd='${{ secrets.PWD }}'
           # spkey='${{ secrets.SPKEY }}'
