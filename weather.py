@@ -1,7 +1,7 @@
 import requests
 
 
-spkeys = input().split('|')
+spkeys = input().split('#')
 
 
 # 采集网易云的接口
