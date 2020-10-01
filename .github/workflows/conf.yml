@@ -23,12 +23,14 @@ jobs:
         with:
           python-version: 3.7
       - name: 安装依赖并替换环境变量
+      env:
+            SPKEY: ${{ secrets.SPKEY }}
         run: |
           pip install -r requirements.txt
 
           # user='${{ secrets.USER }}'
           # pwd='${{ secrets.PWD }}'
-          spkey='${{ secrets.SPKEY }}'
+          # spkey='${{ secrets.SPKEY }}'
 
           # user_list=()
           # pwd_list=()
@@ -57,9 +59,10 @@ jobs:
 
           # for ((i=0;i<$user_num;i++))
           # do
-          python3 weather.py <<EOF
+          python3 weather.py
+          # python3 weather.py <<EOF
           # ${user_list[$i]}
           # ${pwd_list[$i]}
-          ${spkey}
-          EOF
+          # ${spkey}
+          # EOF
           # done
