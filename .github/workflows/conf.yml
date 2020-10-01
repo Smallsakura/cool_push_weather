@@ -27,6 +27,8 @@ jobs:
             SPKEY: ${{ secrets.SPKEY }}
         run: |
           pip install -r requirements.txt
+          python3 weather.py
+          # run: python autoclick.py
 
           # user='${{ secrets.USER }}'
           # pwd='${{ secrets.PWD }}'
@@ -59,7 +61,7 @@ jobs:
 
           # for ((i=0;i<$user_num;i++))
           # do
-          python3 weather.py
+          
           # python3 weather.py <<EOF
           # ${user_list[$i]}
           # ${pwd_list[$i]}
