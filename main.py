@@ -8,6 +8,8 @@
 @Description : 
 @Software: PyCharm
 """
+import requests.packages.urllib3.util.ssl_
+requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS = 'ALL'
 import requests
 import os
 
