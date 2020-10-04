@@ -22,7 +22,7 @@ spkeys = os.environ['SPKEY'].split('#')
 def get_163_info():
     headers = {
         "authority": "api.uomg.com",
-        "path": "/api/ comments.163?format = json",
+        "path": "/api/comments.163?format = json",
         "scheme": "https",
         "accept": "text / html, application / xhtml + xml, application / xml;    q = 0.9, image / webp, image / apng, * / *;q = 0.8, application / signed - exchange;v = b3;q = 0.9",
         "accept-encoding": "gzip, deflate, braccept - language: zh - CN, zh;q = 0.9, en;q = 0.8",
@@ -36,7 +36,7 @@ def get_163_info():
         "upgrade-insecure-requests": "1",
         "user-agent": "Mozilla / 5.0(WindowsNT10.0;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 80.0.3987.163Safari / 537.36",
     }
-    url = "https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json"
+    url = "http://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json"
     data = requests.get(url, headers=headers).json().get('data')
     # print(data)
     # data = json.loads(resp)
