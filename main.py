@@ -56,11 +56,11 @@ def get_163_info():
         # push(msg.encode("utf-8"))
         # data['msg']="@music=[type=custom,title={},url={},image={}]@".format(data['name'],data['url'],data['picurl'])
         data['music'] = "[CQ:music,type=163,id={}]".format(id)
-        info = "夜深了，听完这首歌就睡觉吧！"
-        # print(data['msg'])
-        for spkey in spkeys:
-            requests.post('https://push.xuthus.cc/send/',
-                          spkey, info.encode('utf-8'))
+        # info = "夜深了，听完这首歌就睡觉吧！"
+        # # print(data['msg'])
+        # for spkey in spkeys:
+        #     requests.post('https://push.xuthus.cc/send/',
+        #                   spkey, info.encode('utf-8'))
         for spkey in spkeys:
             requests.post('https://push.xuthus.cc/send/' +
                           spkey, data['music'].encode('utf-8'))
