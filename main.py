@@ -56,8 +56,11 @@ def get_163_info():
         # push(msg.encode("utf-8"))
         # data['msg']="@music=[type=custom,title={},url={},image={}]@".format(data['name'],data['url'],data['picurl'])
         data['music'] = "[CQ:music,type=163,id={}]".format(id)
+        info = "夜深了，听完这首歌就睡觉吧！"
         # print(data['msg'])
         for spkey in spkeys:
+            requests.post('https://push.xuthus.cc/send/',
+                          spkey, info.encode('utf-8'))
             requests.post('https://push.xuthus.cc/send/' +
                           spkey, data['music'].encode('utf-8'))
         #
@@ -122,7 +125,7 @@ def main(*args):
         for spkey in spkeys:
             cpurl = 'https://push.xuthus.cc/send/' + \
                 spkey  # 自己改发送方式，我专门创建了个群来收消息，所以我用的group
-            tdwt = '【今日份天气】\n城市：' + d['cityInfo']['parent'] + ' ' + d['cityInfo']['city'] + '\n日期：' + \
+            tdwt = '【明日份天气】\n城市：' + d['cityInfo']['parent'] + ' ' + d['cityInfo']['city'] + '\n日期：' + \
                    d["data"]["forecast"][p]["ymd"] + ' ' + d["data"]["forecast"][p]["week"] + '\n天气：' + \
                    d["data"]["forecast"][p]["type"] + '\n温度：' + d["data"]["forecast"][p]["high"] + ' ' + \
                    d["data"]["forecast"][p]["low"] + '\n湿度：' + \
