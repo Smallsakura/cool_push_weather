@@ -59,9 +59,11 @@ def get_163_info():
         info = "夜深了，听完这首歌就睡觉吧！"
         # print(data['msg'])
         for spkey in spkeys:
-            # requests.post('https://push.xuthus.cc/send/',spkey, info.encode('utf-8'))
+            requests.post('https://push.xuthus.cc/send/',
+                          spkey, info.encode('utf-8'))
+        for spkey in spkeys:
             requests.post('https://push.xuthus.cc/send/' +
-                          spkey, (info+data['music']).encode('utf-8'))
+                          spkey, data['music'].encode('utf-8'))
         #
         return data
     except Exception as e:
