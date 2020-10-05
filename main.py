@@ -15,10 +15,26 @@ requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS = 'ALL'
 
 spkeys = os.environ['SPKEY'].split('#')
 
+tiankey = os.environ['TIAN_KEY']
 
 # print("秘钥", spkeys)
 
+# 发送晚安心语
+
+
+def get_xy():
+    tianapi = "http://api.tianapi.com/txapi/wanan/index?key="+tiankey
+    data = requests.get(tianapi).json()
+    msg = data.get('newslist')[0]['content']
+    print(data.get('newslist')[0]['content'])
+    for spkey in spkeys:
+        requests.post('https://push.xuthus.cc/send/' +
+                      spkey, msg.encode('utf-8'))
+
+
 # 采集网易云的接口
+
+
 def get_163_info():
     headers = {
         "authority": "api.uomg.com",
@@ -138,6 +154,7 @@ def main(*args):
             requests.post(cpurl,
                           tdwt.encode('utf-8'))  # 把天气数据转换成UTF-8格式，不然要报错。
             # 发送音乐
+        get_xy()
         get_163_info()
     else:
         error = '【出现错误】\n　　今日天气推送错误，请检查服务状态！'

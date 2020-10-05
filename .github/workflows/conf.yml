@@ -24,6 +24,7 @@ jobs:
       - name: 安装依赖并替换环境变量
         env:
           SPKEY: ${{ secrets.SPKEY }}
+          TIAN_KEY: ${{ secrets.TIAN_KEY }}
         run: |
           pip install -r requirements.txt
           python3 main.py
