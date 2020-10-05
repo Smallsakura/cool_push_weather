@@ -26,7 +26,9 @@ def get_xy():
     tianapi = "http://api.tianapi.com/txapi/wanan/index?key="+tiankey
     data = requests.get(tianapi).json()
     msg = data.get('newslist')[0]['content']
-    print(data.get('newslist')[0]['content'])
+    print(msg)
+    if '晚安' not in msg:
+        return get_xy()
     for spkey in spkeys:
         requests.post('https://push.xuthus.cc/send/' +
                       spkey, msg.encode('utf-8'))
