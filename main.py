@@ -15,6 +15,8 @@ requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS = 'ALL'
 
 spkeys = os.environ['SPKEY'].split('#')
 
+gpkeys = []
+
 tiankey = os.environ['TIAN_KEY']
 
 # print("秘钥", spkeys)
@@ -82,6 +84,9 @@ def get_163_info():
         for spkey in spkeys:
             requests.post('https://push.xuthus.cc/send/' +
                           spkey, data['music'].encode('utf-8'))
+        for gpkey in gpkeys:
+            requests.post('https://push.xuthus.cc/group/' +
+                          gpkey, data['music'].encode('utf-8'))
         #
         return data
     except Exception as e:
@@ -155,6 +160,20 @@ def main(*args):
 
             requests.post(cpurl,
                           tdwt.encode('utf-8'))  # 把天气数据转换成UTF-8格式，不然要报错。
+        if gpkeys:
+            for gpkey in gpkeys:
+                gpurl = 'https://push.xuthus.cc/group/' + \
+                    gpkey  # 自己改发送方式，我专门创建了个群来收消息，所以我用的group
+                tdwt = '【明日份天气】\n城市：' + d['cityInfo']['parent'] + ' ' + d['cityInfo']['city'] + '\n日期：' + \
+                    d["data"]["forecast"][p]["ymd"] + ' ' + d["data"]["forecast"][p]["week"] + '\n天气：' + \
+                    d["data"]["forecast"][p]["type"] + '\n温度：' + d["data"]["forecast"][p]["high"] + ' ' + \
+                    d["data"]["forecast"][p]["low"] + '\n湿度：' + \
+                    d["data"]["shidu"] + '\n空气质量：' + d["data"]["quality"] + '\n风力风向：' + d["data"]["forecast"][p][
+                        "fx"] + ' ' + d["data"]["forecast"][p]["fl"] + '\n温馨提示：' + \
+                    d["data"]["forecast"][p]["notice"] + '。\n[更新时间：' + d["time"] + ']\n✁-----------------' + \
+                    get_iciba_everyday().rstrip()  # 天气提示内容，基本上该有的都做好了，如果要添加信息可以看上面的print，我感觉有用的我都弄进来了。
+                requests.post(gpurl,
+                              tdwt.encode('utf-8'))  # 把天气数据转换成UTF-8格式，不然要报错。
             # 发送音乐
         get_xy()
         get_163_info()
