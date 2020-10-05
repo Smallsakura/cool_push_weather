@@ -87,7 +87,7 @@ def get_163_info():
         return get_163_info()
 
 
-# 获取词霸英语
+# 获取词霸
 def get_iciba_everyday():
     icbapi = 'http://open.iciba.com/dsapi/'
     eed = requests.get(icbapi)
