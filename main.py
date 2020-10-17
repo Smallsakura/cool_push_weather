@@ -31,6 +31,7 @@ def get_xy():
     print(msg)
     if '晚安' not in msg:
         return get_xy()
+    msg='你明日的计划是什么'
     for spkey in spkeys:
         requests.post('https://push.xuthus.cc/send/' +
                       spkey, msg.encode('utf-8'))
