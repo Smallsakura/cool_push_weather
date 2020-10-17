@@ -176,8 +176,8 @@ def main(*args):
                 requests.post(gpurl,
                               tdwt.encode('utf-8'))  # 把天气数据转换成UTF-8格式，不然要报错。
             # 发送音乐
-        get_xy()
         get_163_info()
+        get_xy()
     else:
         error = '【出现错误】\n　　今日天气推送错误，请检查服务状态！'
         requests.post('https://push.xuthus.cc/send/' +
